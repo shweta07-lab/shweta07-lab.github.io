@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Kumar | Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap');
+
+        /* CSS Variables - Matching the palette */
+        :root {
+            --bg-cream: #F9F6F0;
+            --mint-green: #7BC1AC;
+            --hot-pink: #E91E63;
+            --dark-purple: #3A2359;
+            --text-dark: #2B2B2B;
+            --stroke-color: #333333;
+            --hard-shadow: 8px 8px 0px rgba(51, 51, 51, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Decorative Background Elements */
+        .bg-element {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .dot-pattern {
+            width: 150px;
+            height: 150px;
+            background-image: radial-gradient(var(--stroke-color) 15%, transparent 15%);
+            background-size: 20px 20px;
+            border-radius: 50%;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.7;
+        }
+
+        .purple-blob {
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background-color: var(--dark-purple);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation block */
+        header {
+            position: fixed;
+            top: 2rem;
+            right: 0;
+            width: 65%;
+            background-color: var(--mint-green);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            box-shadow: -4px 4px 0px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: auto;
+            cursor: pointer;
+            display: none; /* Hidden on desktop */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Section Setup */
+        section {
+            min-height: 100vh;
+            padding: 150px 8% 100px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            border-bottom: 4px solid var(--mint-green);
+            display: inline-block;
+            align-self: flex-start;
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero / About Section */
+        #about {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            padding-right: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Compact Outline Text */
+        .outline-title {
+            font-size: clamp(3.5rem, 7vw, 6.5rem); 
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 3px var(--stroke-color);
+            text-transform: uppercase;
+            line-height: 0.95; 
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .sub-title {
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-mint {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--mint-green);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-mint:hover {
+            border: 2px solid var(--stroke-color);
+            box-shadow: 4px 4px 0px var(--stroke-color);
+            transform: translate(-2px, -2px);
+        }
+
+        /* Hero Graphic */
+        .hero-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bulb-svg {
+            width: 100%;
+            max-width: 450px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Education Timeline */
+        .timeline-container {
+            border-left: 4px solid var(--stroke-color);
+            margin-left: 20px;
+            padding-left: 30px;
+            max-width: 800px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: var(--hot-pink);
+            border: 4px solid var(--stroke-color);
+            border-radius: 50%;
+            left: -44px; 
+            top: 20px;
+            z-index: 2;
+        }
+        
+        .timeline-item:nth-child(2) .timeline-dot { background-color: var(--mint-green); }
+        .timeline-item:nth-child(3) .timeline-dot { background-color: var(--dark-purple); }
+
+        /* Content Grids (Skills, Projects) */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            width: 100%;
+        }
+
+        /* Brutalist Card Design */
+        .brutalist-card {
+            background: var(--bg-cream);
+            border: 3px solid var(--stroke-color);
+            padding: 2rem;
+            box-shadow: var(--hard-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            width: 100%;
+        }
+
+        .brutalist-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 12px 12px 0px var(--hot-pink);
+        }
+
+        .brutalist-card.mint-hover:hover {
+            box-shadow: 12px 12px 0px var(--mint-green);
+        }
+
+        .brutalist-card.purple-hover:hover {
+            box-shadow: 12px 12px 0px var(--dark-purple);
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .card-sub {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--hot-pink);
+            margin-bottom: 1rem;
+        }
+
+        /* Tags for Skills & Languages */
+        .tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--stroke-color);
+            background: var(--mint-green);
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 3px 3px 0px var(--stroke-color);
+            transition: all 0.2s;
+        }
+
+        .tag.purple { background: var(--dark-purple); color: white; }
+        .tag.pink { background: var(--hot-pink); color: white; }
+        .tag.light { background: white; }
+
+        .tag:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--stroke-color);
+        }
+
+        /* Projects Section Specifics */
+        #projects {
+            background-color: white;
+            border-top: 4px solid var(--stroke-color);
+            border-bottom: 4px solid var(--stroke-color);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--mint-green);
+            border: 2px solid var(--stroke-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Contact Form */
+        #contact {
+            align-items: center;
+        }
+
+        .contact-box {
+            background: white;
+            border: 4px solid var(--stroke-color);
+            padding: 3rem;
+            box-shadow: var(--hard-shadow);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--stroke-color);
+            background: var(--bg-cream);
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            box-shadow: 4px 4px 0px var(--mint-green);
+        }
+
+        .submit-btn {
+            background: var(--hot-pink);
+            color: white;
+            border: 3px solid var(--stroke-color);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0px var(--stroke-color);
+        }
+
+        .submit-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--stroke-color);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) {
+            header {
+                width: 90%;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Mobile Responsiveness - Completely Optimized for Compactness */
+        @media (max-width: 768px) {
+            /* Hide absolute decorative elements that overlap text on mobile */
+            .bg-element {
+                display: none; 
+            }
+
+            header { 
+                width: 100%; 
+                top: 0; 
+                border-radius: 0;
+                padding: 0.8rem 5%;
+                flex-wrap: wrap;
+            }
+            
+            .hamburger {
+                display: block;
+                font-size: 1.1rem; /* Made the giant menu text smaller and sleeker */
+                letter-spacing: 1px;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: left;
+                gap: 1rem;
+                padding-top: 1rem;
+                margin-top: 0.5rem;
+                border-top: 2px solid var(--stroke-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            section {
+                padding: 100px 5% 60px 5%; /* Tightened padding for a more compact feel */
+            }
+
+            #about { 
+                flex-direction: column; /* Text at top, illustration at bottom */
+                text-align: left; 
+                padding-top: 110px;
+                gap: 2rem;
+            }
+
+            .hero-content { 
+                padding-right: 0; 
+            }
+            
+            .outline-title {
+                font-size: 3rem; /* Compact name size */
+                word-wrap: break-word;
+            }
+
+            .sub-title {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem; /* Scaled down paragraph for mobile readability */
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-graphic {
+                width: 100%;
+            }
+
+            .bulb-svg {
+                max-width: 160px; /* Scaled illustration down significantly for mobile */
+                margin: 0 auto;
+            }
+            
+            .section-title { 
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-container {
+                margin-left: 10px;
+                padding-left: 20px;
+            }
+            
+            .timeline-dot {
+                left: -34px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .brutalist-card {
+                padding: 1.5rem;
+            }
+
+            .contact-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Block -->
+    <header>
+        <div class="hamburger" onclick="toggleMenu()">☰ MENU</div>
+        <ul class="nav-links" id="navMenu">
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#education" onclick="toggleMenu()">Education</a></li>
+            <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero / About Section -->
+    <section id="about">
+        <div class="bg-element dot-pattern"></div>
+        <div class="bg-element purple-blob"></div>
+
+        <div class="hero-content reveal">
+            <h1 class="outline-title">SANDEEP<br>KUMAR</h1>
+            <h2 class="sub-title">B.TECH STUDENT & DEVELOPER</h2>
+            <p>
+                As a dedicated engineering student at Government Engineering College (GEC) West Champaran, I combine a strong foundation in core computer science with hands-on technical execution. I am passionate about building robust software solutions, exploring cloud architectures, and continuously expanding my developer toolkit to solve real-world problems.
+            </p>
+            <a href="#projects" class="btn-mint">View My Work</a>
+        </div>
+
+        <div class="hero-graphic reveal">
+            <!-- Inline SVG -->
+            <svg class="bulb-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                <path d="M130,170 v40 a20,20 0 0,1 -40,0 v-40 Z" fill="#E91E63"/>
+                <circle cx="110" cy="80" r="70" fill="#E91E63"/>
+                <circle cx="90" cy="100" r="70" fill="transparent" stroke="#333" stroke-width="8"/>
+                <path d="M55,160 L55,210 Q55,230 90,230 Q125,230 125,210 L125,160 Z" fill="transparent" stroke="#333" stroke-width="8"/>
+                <circle cx="90" cy="95" r="8" fill="transparent" stroke="#333" stroke-width="6"/>
+                <line x1="90" y1="103" x2="90" y2="180" stroke="#333" stroke-width="6"/>
+                <line x1="60" y1="190" x2="120" y2="190" stroke="#333" stroke-width="6"/>
+                <circle cx="190" cy="60" r="4" fill="#333"/>
+                <circle cx="10" cy="110" r="5" fill="#333"/>
+                <circle cx="185" cy="110" r="4" fill="#333"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Education Section (Timeline Design) -->
+    <section id="education">
+        <h2 class="section-title reveal">Education Background</h2>
+        
+        <div class="timeline-container">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="brutalist-card mint-hover">
+                    <div class="card-header">B.Tech in Engineering</div>
+                    <div class="card-sub">Government Engineering College West Champaran</div>
+                    <p>Currently pursuing my Bachelor of Technology, focusing on core software engineering principles, algorithms, and system architecture.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="brutalist-card purple-hover">
+                    <div class="card-header">Intermediate (12th)</div>
+                    <div class="card-sub">Higher Secondary Education</div>
+                    <p>Completed higher secondary education with a strong focus on mathematics and sciences, laying the groundwork for engineering.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="brutalist-card">
+                    <div class="card-header">Matriculation (10th)</div>
+                    <div class="card-sub">Secondary Education</div>
+                    <p>Built a solid academic foundation with a deep interest in technology and logical problem-solving from an early age.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Languages Section -->
+    <section id="skills" style="background-color: white; border-top: 4px solid var(--stroke-color);">
+        <h2 class="section-title reveal">Skills & Languages</h2>
+        
+        <div class="grid-layout">
+            <div class="brutalist-card reveal">
+                <div class="card-header">Technical Arsenal</div>
+                <p style="margin-bottom: 1rem;">Programming languages, tools, and frameworks I use to build solutions.</p>
+                <div class="tags">
+                    <span class="tag">C Language</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Java</span>
+                    <span class="tag pink">Data Structures & Algorithms</span>
+                    <span class="tag light">Linux / CLI</span>
+                    <span class="tag light">AWS Cloud</span>
+                </div>
+            </div>
+
+            <div class="brutalist-card reveal mint-hover">
+                <div class="card-header">Communication</div>
+                <p style="margin-bottom: 1rem;">Languages I speak, read, and write for collaboration and personal growth.</p>
+                <div class="tags">
+                    <span class="tag purple">English</span>
+                    <span class="tag purple">Hindi</span>
+                    <span class="tag purple">Bhojpuri</span>
+                    <span class="tag purple">German</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title reveal">Featured Work</h2>
+        
+        <div class="grid-layout">
+            <!-- Project 1: Web Portfolios -->
+            <div class="brutalist-card reveal purple-hover">
+                <div class="project-img" style="background-color: var(--hot-pink);">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: #fff;">[ PORTFOLIOS ]</span>
+                </div>
+                <div class="card-header">Web Portfolios</div>
+                <p>Developing professional digital portfolios and business website designs to streamline local tech operations and digital catalogs.</p>
+                <div class="tags" style="margin-top: 1rem;">
+                    <span class="tag purple" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Frontend</span>
+                    <span class="tag purple" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Web Design</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Flappy Bird in C -->
+            <div class="brutalist-card reveal mint-hover">
+                <div class="project-img" style="background-color: var(--dark-purple);">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: #fff;">[ FLAPPY BIRD ]</span>
+                </div>
+                <div class="card-header">Flappy Bird Clone</div>
+                <p>A terminal-based clone of the popular Flappy Bird game built entirely using the C programming language to demonstrate logic and rendering.</p>
+                <div class="tags" style="margin-top: 1rem;">
+                    <span class="tag" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">C Language</span>
+                    <span class="tag" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Game Dev</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Number Guessing Game -->
+            <div class="brutalist-card reveal">
+                <div class="project-img">
+                    <span style="font-weight: 800; font-size: 1.5rem; color: #333;">[ NUMBER GUESS ]</span>
+                </div>
+                <div class="card-header">Number Guessing Game</div>
+                <p>An interactive command-line application in C that challenges users to guess a randomly generated number with dynamic high/low feedback.</p>
+                <div class="tags" style="margin-top: 1rem;">
+                    <span class="tag pink" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">C Language</span>
+                    <span class="tag pink" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Logic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title reveal">Let's Connect</h2>
+        
+        <div class="contact-box reveal">
+            <form action="mailto:example@gmail.com" method="POST" enctype="text/plain">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="Name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email" placeholder="hello@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" name="Message" placeholder="Let's build something bold..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            if(window.innerWidth <= 768) {
+                menu.classList.toggle('active');
+            }
+        }
+
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(reveal => observer.observe(reveal));
+        });
+    </script>
+</body>
+</html>
