@@ -3,725 +3,994 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Kumari  Shweta  | Portfolio</title>
+
+    <title>Shweta Kumari | B.Tech Student & Developer</title>
+
+    <meta name="description"
+          content="Shweta Kumari - B.Tech student, developer and open-source learner.">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap');
-
-        /* CSS Variables - Matching the palette */
-        :root {
-            --bg-cream: #F9F6F0;
-            --mint-green: #7BC1AC;
-            --hot-pink: #E91E63;
-            --dark-purple: #3A2359;
-            --text-dark: #2B2B2B;
-            --stroke-color: #333333;
-            --hard-shadow: 8px 8px 0px rgba(51, 51, 51, 1);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
         }
 
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f172a;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+        }
+
         body {
-            background-color: var(--bg-cre
-            color: var(--text-dark);
-            overflow-x: hidden;
-            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        /* Decorative Background Elements */
-        .bg-element {
-            position: absolute;
-            z-index: -1;
-        }
+        /* ================= NAVBAR ================= */
 
-        .dot-pattern {
-            width: 150px;
-            height: 150px;
-            background-image: radial-gradient(var(--stroke-color) 15%, transparent 15%);
-            background-size: 20px 20px;
-            border-radius: 50%;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.7;
-        }
-
-        .purple-blob {
-            bottom: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background-color: var(--dark-purple);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        /* Navigation block */
-        header {
-            position: fixed;
-            top: 2rem;
-            right: 0;
-            width: 65%;
-            background-color: var(--mint-green);
+        nav {
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
+            background: var(--secondary);
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 22px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* ================= HERO ================= */
+
+        #home {
+            min-height: 92vh;
             display: flex;
             align-items: center;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-            box-shadow: -4px 4px 0px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            justify-content: center;
+            padding: 60px 8%;
+            background:
+                linear-gradient(135deg, #eff6ff, #f8fafc);
         }
 
-        .hamburger {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-right: auto;
-            cursor: pointer;
-            display: none; /* Hidden on desktop */
+        .hero {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 50px;
+            align-items: center;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-            margin-left: auto;
+        .hero-text h4 {
+            color: var(--primary);
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s;
+        .hero-text h1 {
+            font-size: 58px;
+            color: var(--secondary);
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .hero-text h2 {
+            font-size: 27px;
+            margin-bottom: 20px;
+            color: #475569;
+        }
+
+        .hero-text p {
+            font-size: 17px;
+            max-width: 680px;
+            color: var(--muted);
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
             display: inline-block;
+            padding: 12px 24px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            transform: translateY(-2px);
+        .primary-btn {
+            background: var(--primary);
             color: white;
         }
 
-        /* Section Setup */
-        section {
-            min-height: 100vh;
-            padding: 150px 8% 100px 8%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
+        .primary-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
         }
 
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: var(--text-dark);
-            border-bottom: 4px solid var(--mint-green);
-            display: inline-block;
-            align-self: flex-start;
+        .secondary-btn {
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
 
-        /* Scroll Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .secondary-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero / About Section */
-        #about {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .hero-content {
-            flex: 1.2;
-            padding-right: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Compact Outline Text */
-        .outline-title {
-            font-size: clamp(3.5rem, 7vw, 6.5rem); 
-            font-weight: 800;
-            color: transparent;
-            -webkit-text-stroke: 3px var(--stroke-color);
-            text-transform: uppercase;
-            line-height: 0.95; 
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .sub-title {
-            font-size: clamp(1.2rem, 2vw, 2rem);
-            font-weight: 600;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .btn-mint {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--mint-green);
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn-mint:hover {
-            border: 2px solid var(--stroke-color);
-            box-shadow: 4px 4px 0px var(--stroke-color);
-            transform: translate(-2px, -2px);
-        }
-
-        /* Hero Graphic */
-        .hero-graphic {
-            flex: 1;
+        .hero-card {
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
 
-        .bulb-svg {
-            width: 100%;
-            max-width: 450px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Education Timeline */
-        .timeline-container {
-            border-left: 4px solid var(--stroke-color);
-            margin-left: 20px;
-            padding-left: 30px;
-            max-width: 800px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background-color: var(--hot-pink);
-            border: 4px solid var(--stroke-color);
+        .profile-circle {
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
-            left: -44px; 
-            top: 20px;
-            z-index: 2;
-        }
-        
-        .timeline-item:nth-child(2) .timeline-dot { background-color: var(--mint-green); }
-        .timeline-item:nth-child(3) .timeline-dot { background-color: var(--dark-purple); }
-
-        /* Content Grids (Skills, Projects) */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            width: 100%;
-        }
-
-        /* Brutalist Card Design */
-        .brutalist-card {
-            background: var(--bg-cream);
-            border: 3px solid var(--stroke-color);
-            padding: 2rem;
-            box-shadow: var(--hard-shadow);
-            transition: all 0.3s ease;
-            position: relative;
-            width: 100%;
-        }
-
-        .brutalist-card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 12px 12px 0px var(--hot-pink);
-        }
-
-        .brutalist-card.mint-hover:hover {
-            box-shadow: 12px 12px 0px var(--mint-green);
-        }
-
-        .brutalist-card.purple-hover:hover {
-            box-shadow: 12px 12px 0px var(--dark-purple);
-        }
-
-        .card-header {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .card-sub {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--hot-pink);
-            margin-bottom: 1rem;
-        }
-
-        /* Tags for Skills & Languages */
-        .tags {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--stroke-color);
-            background: var(--mint-green);
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            box-shadow: 3px 3px 0px var(--stroke-color);
-            transition: all 0.2s;
-        }
-
-        .tag.purple { background: var(--dark-purple); color: white; }
-        .tag.pink { background: var(--hot-pink); color: white; }
-        .tag.light { background: white; }
-
-        .tag:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px var(--stroke-color);
-        }
-
-        /* Projects Section Specifics */
-        #projects {
-            background-color: white;
-            border-top: 4px solid var(--stroke-color);
-            border-bottom: 4px solid var(--stroke-color);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: var(--mint-green);
-            border: 2px solid var(--stroke-color);
-            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #2563eb, #60a5fa);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            color: white;
+            font-size: 85px;
+            font-weight: bold;
+            box-shadow: 0 20px 50px rgba(37,99,235,0.3);
         }
 
-        /* Contact Form */
-        #contact {
-            align-items: center;
+        /* ================= COMMON ================= */
+
+        section {
+            padding: 85px 8%;
         }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            color: var(--secondary);
+        }
+
+        .section-heading h2 span {
+            color: var(--primary);
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 8px;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-container {
+            max-width: 950px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+        }
+
+        .about-container p {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skills-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-weight: bold;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(37,99,235,0.12);
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        /* ================= EDUCATION ================= */
+
+        .timeline {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .education-card {
+            background: white;
+            padding: 28px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.07);
+        }
+
+        .education-card h3 {
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        .education-card h4 {
+            color: var(--secondary);
+            margin: 5px 0;
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* ================= PROJECTS ================= */
+
+        .projects-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= CERTIFICATES ================= */
+
+        .certificates {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .certificate-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        .certificate-card h3 {
+            color: var(--primary);
+        }
+
+        /* ================= OPEN SOURCE ================= */
+
+        .opensource {
+            max-width: 900px;
+            margin: auto;
+            background: #eff6ff;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .opensource h3 {
+            color: var(--secondary);
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .opensource p {
+            color: var(--muted);
+        }
+
+        /* ================= CONTACT ================= */
 
         .contact-box {
+            max-width: 850px;
+            margin: auto;
             background: white;
-            border: 4px solid var(--stroke-color);
-            padding: 3rem;
-            box-shadow: var(--hard-shadow);
-            max-width: 600px;
-            width: 100%;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.07);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .contact-box p {
+            margin: 12px 0;
+            font-size: 17px;
         }
 
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
+        .contact-box a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--stroke-color);
-            background: var(--bg-cream);
-            font-size: 1rem;
-            font-weight: 600;
-            outline: none;
-            transition: all 0.2s;
-        }
+        /* ================= FOOTER ================= */
 
-        input:focus, textarea:focus {
-            box-shadow: 4px 4px 0px var(--mint-green);
-        }
-
-        .submit-btn {
-            background: var(--hot-pink);
+        footer {
+            background: var(--secondary);
             color: white;
-            border: 3px solid var(--stroke-color);
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.2s;
-            box-shadow: 4px 4px 0px var(--stroke-color);
+            text-align: center;
+            padding: 30px 15px;
         }
 
-        .submit-btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px var(--stroke-color);
+        footer span {
+            color: #60a5fa;
         }
 
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
+        /* ================= RESPONSIVE ================= */
 
-        /* Tablet Responsiveness */
-        @media (max-width: 1024px) {
-            header {
-                width: 90%;
-            }
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
+        @media (max-width: 800px) {
 
-        /* Mobile Responsiveness - Completely Optimized for Compactness */
-        @media (max-width: 768px) {
-            /* Hide absolute decorative elements that overlap text on mobile */
-            .bg-element {
-                display: none; 
-            }
-
-            header { 
-                width: 100%; 
-                top: 0; 
-                border-radius: 0;
-                padding: 0.8rem 5%;
-                flex-wrap: wrap;
-            }
-            
-            .hamburger {
-                display: block;
-                font-size: 1.1rem; /* Made the giant menu text smaller and sleeker */
-                letter-spacing: 1px;
-            }
-
-            .nav-links {
-                display: none;
+            nav {
                 flex-direction: column;
-                width: 100%;
-                text-align: left;
-                gap: 1rem;
-                padding-top: 1rem;
-                margin-top: 0.5rem;
-                border-top: 2px solid var(--stroke-color);
+                gap: 15px;
             }
 
-            .nav-links.active {
-                display: flex;
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 43px;
+            }
+
+            .hero-text h2 {
+                font-size: 22px;
+            }
+
+            .profile-circle {
+                width: 210px;
+                height: 210px;
+                font-size: 65px;
             }
 
             section {
-                padding: 100px 5% 60px 5%; /* Tightened padding for a more compact feel */
+                padding: 60px 5%;
             }
 
-            #about { 
-                flex-direction: column; /* Text at top, illustration at bottom */
-                text-align: left; 
-                padding-top: 110px;
-                gap: 2rem;
-            }
-
-            .hero-content { 
-                padding-right: 0; 
-            }
-            
-            .outline-title {
-                font-size: 3rem; /* Compact name size */
-                word-wrap: break-word;
-            }
-
-            .sub-title {
-                font-size: 1.2rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem; /* Scaled down paragraph for mobile readability */
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-graphic {
-                width: 100%;
-            }
-
-            .bulb-svg {
-                max-width: 160px; /* Scaled illustration down significantly for mobile */
-                margin: 0 auto;
-            }
-            
-            .section-title { 
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .timeline-container {
-                margin-left: 10px;
-                padding-left: 20px;
-            }
-            
-            .timeline-dot {
-                left: -34px;
-                width: 20px;
-                height: 20px;
-            }
-
-            .brutalist-card {
-                padding: 1.5rem;
-            }
-
-            .contact-box {
-                padding: 1.5rem;
+            .section-heading h2 {
+                font-size: 32px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Top Navigation Block -->
-    <header>
-        <div class="hamburger" onclick="toggleMenu()">☰ MENU</div>
-        <ul class="nav-links" id="navMenu">
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#education" onclick="toggleMenu()">Education</a></li>
-            <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </ul>
-    </header>
+<!-- ================= NAVIGATION ================= -->
 
-    <!-- Hero / About Section -->
-    <section id="about">
-        <div class="bg-element dot-pattern"></div>
-        <div class="bg-element purple-blob"></div>
+<nav>
+    <div class="logo">
+        Shweta <span>Kumari</span>
+    </div>
 
-        <div class="hero-content reveal">
-            <h1 class="outline-title">Kumari<br>Shweta</h1>
-            <h2 class="sub-title">B.TECH STUDENT & DEVELOPER</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home">
+
+    <div class="hero">
+
+        <div class="hero-text">
+
+            <h4>Hello, I'm</h4>
+
+            <h1>
+                Shweta <span>Kumari</span>
+            </h1>
+
+            <h2>
+                B.Tech Student & Aspiring Developer
+            </h2>
+
             <p>
-                As a dedicated engineering student at Government Engineering College (GEC) West Champaran, I combine a strong foundation in core computer science with hands-on technical execution. I am passionate about building robust software solutions, exploring cloud architectures, and continuously expanding my developer toolkit to solve real-world problems.
+                I am a passionate B.Tech student interested in
+                software development, web development, Java,
+                Git, GitHub and open-source technologies.
+                I enjoy learning new technologies and building
+                practical projects.
             </p>
-            <a href="#projects" class="btn-mint">View My Work</a>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn primary-btn">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn secondary-btn">
+                    Contact Me
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="hero-graphic reveal">
-            <!-- Inline SVG -->
-            <svg class="bulb-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
-                <path d="M130,170 v40 a20,20 0 0,1 -40,0 v-40 Z" fill="#E91E63"/>
-                <circle cx="110" cy="80" r="70" fill="#E91E63"/>
-                <circle cx="90" cy="100" r="70" fill="transparent" stroke="#333" stroke-width="8"/>
-                <path d="M55,160 L55,210 Q55,230 90,230 Q125,230 125,210 L125,160 Z" fill="transparent" stroke="#333" stroke-width="8"/>
-                <circle cx="90" cy="95" r="8" fill="transparent" stroke="#333" stroke-width="6"/>
-                <line x1="90" y1="103" x2="90" y2="180" stroke="#333" stroke-width="6"/>
-                <line x1="60" y1="190" x2="120" y2="190" stroke="#333" stroke-width="6"/>
-                <circle cx="190" cy="60" r="4" fill="#333"/>
-                <circle cx="10" cy="110" r="5" fill="#333"/>
-                <circle cx="185" cy="110" r="4" fill="#333"/>
-            </svg>
+
+        <div class="hero-card">
+
+            <div class="profile-circle">
+                SK
+            </div>
+
         </div>
-    </section>
 
-    <!-- Education Section (Timeline Design) -->
-    <section id="education">
-        <h2 class="section-title reveal">Education Background</h2>
-        
-        <div class="timeline-container">
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="brutalist-card mint-hover">
-                    <div class="card-header">B.Tech in Engineering</div>
-                    <div class="card-sub">Government Engineering College West Champaran</div>
-                    <p>Currently pursuing my Bachelor of Technology, focusing on core software engineering principles, algorithms, and system architecture.</p>
-                </div>
-            </div>
+    </div>
 
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="brutalist-card purple-hover">
-                    <div class="card-header">Intermediate (12th)</div>
-                    <div class="card-sub">C.B.S.E public school Gopalganj</div>
-                    <p>Completed higher secondary education with a strong focus on mathematics and sciences, Editing video,photography,Painting,laying the groundwork for engineering.</p>
-                </div>
-            </div>
+</section>
 
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="brutalist-card">
-                    <div class="card-header">Matriculation (10th)</div>
-                    <div class="card-sub">Gyanada International School Bihar</div>
-                    <p>Built a solid academic foundation with a deep interest in technology ,  team leadership and logical problem-solving from an early age.</p>
-                </div>
-            </div>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+    <div class="section-heading">
+
+        <h2>About <span>Me</span></h2>
+
+        <p>Get to know me</p>
+
+    </div>
+
+
+    <div class="about-container">
+
+        <p>
+            Hello! I am
+            <span class="highlight">Shweta Kumari</span>,
+            a B.Tech student with a strong interest in
+            technology and software development.
+        </p>
+
+        <p>
+            I am currently developing my programming and
+            web development skills. I enjoy working with
+            HTML, CSS, Java, Git and GitHub.
+        </p>
+
+        <p>
+            I am also learning about
+            <span class="highlight">Open Source</span>
+            development and version control. My goal is to
+            continuously improve my technical skills and
+            build useful real-world projects.
+        </p>
+
+        <p>
+            I believe in learning by doing, solving problems
+            and improving a little every day.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills">
+
+    <div class="section-heading">
+
+        <h2>My <span>Skills</span></h2>
+
+        <p>Technologies and skills I am learning</p>
+
+    </div>
+
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            HTML
         </div>
-    </section>
 
-    <!-- Skills & Languages Section -->
-    <section id="skills" style="background-color: white; border-top: 4px solid var(--stroke-color);">
-        <h2 class="section-title reveal">Skills & Languages</h2>
-        
-        <div class="grid-layout">
-            <div class="brutalist-card reveal">
-                <div class="card-header">Technical Arsenal</div>
-                <p style="margin-bottom: 1rem;">Programming languages, tools, and frameworks I use to build solutions.</p>
-                <div class="tags">
-                    <span class="tag">C Language</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Java</span>
-                    <span class="tag pink">Data Structures & Algorithms</span>
-                    <span class="tag light">HTML / CLI</span>
-                    <span class="tag light">jAVASCRIPTS</span>
-                </div>
-            </div>
-
-            <div class="brutalist-card reveal mint-hover">
-                <div class="card-header">Communication</div>
-                <p style="margin-bottom: 1rem;">Languages I speak, read, and write for collaboration and personal growth.</p>
-                <div class="tags">
-                    <span class="tag purple">English</span>
-                    <span class="tag purple">Hindi</span>
-                    <span class="tag purple">Bhojpuri</span>
-                    <span class="tag purple">Japanese</span>
-                </div>
-            </div>
+        <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            CSS
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title reveal">Featured Work</h2>
-        
-        <div class="grid-layout">
-            <!-- Project 1: Web Portfolios -->
-            <div class="brutalist-card reveal purple-hover">
-                <div class="project-img" style="background-color: var(--hot-pink);">
-                    <span style="font-weight: 800; font-size: 1.5rem; color: #fff;">[ PORTFOLIOS ]</span>
-                </div>
-                <div class="card-header">Web Portfolios</div>
-                <p>Developing professional digital portfolios and business website designs to streamline local tech operations and digital catalogs.</p>
-                <div class="tags" style="margin-top: 1rem;">
-                    <span class="tag purple" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Frontend</span>
-                    <span class="tag purple" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Web Design</span>
-                </div>
-            </div>
-
-            <!-- Project 2: Flappy Bird in C -->
-            <div class="brutalist-card reveal mint-hover">
-                <div class="project-img" style="background-color: var(--dark-purple);">
-                    <span style="font-weight: 800; font-size: 1.5rem; color: #fff;">[ FLAPPY BIRD ]</span>
-                </div>
-                <div class="card-header">Flappy Bird Clone</div>
-                <p>A terminal-based clone of the popular Flappy Bird game built entirely using the C programming language to demonstrate logic and rendering.</p>
-                <div class="tags" style="margin-top: 1rem;">
-                    <span class="tag" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">C Language</span>
-                    <span class="tag" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Game Dev</span>
-                </div>
-            </div>
-
-            <!-- Project 3: Number Guessing Game -->
-            <div class="brutalist-card reveal">
-                <div class="project-img">
-                    <span style="font-weight: 800; font-size: 1.5rem; color: #333;">[ NUMBER GUESS ]</span>
-                </div>
-                <div class="card-header">Number Guessing Game</div>
-                <p>An interactive command-line application in C that challenges users to guess a randomly generated number with dynamic high/low feedback.</p>
-                <div class="tags" style="margin-top: 1rem;">
-                    <span class="tag pink" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">C Language</span>
-                    <span class="tag pink" style="padding: 0.3rem 0.6rem; font-size: 0.7rem;">Logic</span>
-                </div>
-            </div>
+        <div class="skill-card">
+            <div class="skill-icon">☕</div>
+            Java
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title reveal">Let's Connect</h2>
-        
-        <div class="contact-box reveal">
-            <form action="mailto:example@gmail.com" method="POST" enctype="text/plain">
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" name="Name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="Email" placeholder="hello@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="4" name="Message" placeholder="Let's build something bold..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+        <div class="skill-card">
+            <div class="skill-icon">🔧</div>
+            Git
         </div>
-    </section>
 
-    <!-- Interactive Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            if(window.innerWidth <= 768) {
-                menu.classList.toggle('active');
-            }
-        }
+        <div class="skill-card">
+            <div class="skill-icon">🐙</div>
+            GitHub
+        </div>
 
-        // Scroll Animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
+        <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            VS Code
+        </div>
 
-            reveals.forEach(reveal => observer.observe(reveal));
-        });
-    </script>
+        <div class="skill-card">
+            <div class="skill-icon">🌍</div>
+            Web Development
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🧠</div>
+            Problem Solving
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">🤝</div>
+            Teamwork
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon">📚</div>
+            Continuous Learning
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section id="education">
+
+    <div class="section-heading">
+
+        <h2>My <span>Education</span></h2>
+
+        <p>My academic journey</p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="education-card">
+
+            <h3>B.Tech</h3>
+
+            <h4>
+                Government Engineering College (GEC),
+                West Champaran
+            </h4>
+
+            <p>
+                Bachelor of Technology
+            </p>
+
+            <p>
+                Currently pursuing B.Tech and developing
+                technical skills in programming and software
+                development.
+            </p>
+
+        </div>
+
+<section id="education">
+
+    <div class="section-heading">
+        <h2>My <span>Education</span></h2>
+        <p>My academic journey</p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="education-card">
+            <h3>B.Tech</h3>
+            <h4>Government Engineering College (GEC), West Champaran</h4>
+            <p>Bachelor of Technology</p>
+            <p>Currently pursuing B.Tech.</p>
+        </div>
+
+        <div class="education-card">
+            <h3>Class 12th</h3>
+            <h4>C.B.S.E Public School, Gopalganj</h4>
+            <p>Senior Secondary Education</p>
+        </div>
+
+        <div class="education-card">
+            <h3>Class 10th</h3>
+            <h4>Gyanada International School, Gopalganj</h4>
+            <p>Secondary Education</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+    <div class="section-heading">
+
+        <h2>My <span>Projects</span></h2>
+
+        <p>Things I am building and learning from</p>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <!-- Project 1 -->
+
+        <div class="project-card">
+
+            <h3>Personal Portfolio Website</h3>
+
+            <p>
+                A responsive personal portfolio website
+                created using HTML and CSS and hosted
+                using GitHub Pages.
+            </p>
+
+            <a
+                href="https://shweta07-lab.github.io/"
+                target="_blank"
+                class="project-link">
+                Live Website →
+            </a>
+
+        </div>
+
+
+        <!-- Project 2 -->
+
+        <div class="project-card">
+
+            <h3>Java Programs</h3>
+
+            <p>
+                Beginner Java programs created while
+                learning Java programming fundamentals,
+                logic building and problem solving.
+            </p>
+
+            <a href="#contact" class="project-link">
+                Learning Project →
+            </a>
+
+        </div>
+
+
+        <!-- Project 3 -->
+
+        <div class="project-card">
+
+            <h3>Git & GitHub Portfolio</h3>
+
+            <p>
+                Practicing repositories, commits,
+                GitHub Pages, version control and
+                project management.
+            </p>
+
+            <a
+                href="https://github.com/shweta07-lab"
+                target="_blank"
+                class="project-link">
+                View GitHub →
+            </a>
+
+        </div>
+
+
+        <!-- Project 4 -->
+
+        <div class="project-card">
+
+            <h3>Open Source Learning</h3>
+
+            <p>
+                Learning open-source contribution,
+                Git workflows and collaborative
+                software development.
+            </p>
+
+            <a
+                href="https://github.com/"
+                target="_blank"
+                class="project-link">
+                Explore →
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= CERTIFICATES ================= -->
+
+<section id="certificates">
+
+    <div class="section-heading">
+
+        <h2>Certificates & <span>Learning</span></h2>
+
+        <p>My learning journey</p>
+
+    </div>
+
+
+    <div class="certificates">
+
+
+        <div class="certificate-card">
+
+            <h3>NPTEL</h3>
+
+            <p>
+                Participating in NPTEL courses and
+                continuing technical learning.
+            </p>
+
+        </div>
+
+
+        <div class="certificate-card">
+
+            <h3>Git & GitHub</h3>
+
+            <p>
+                Learning Git, GitHub repositories,
+                commits, branches and version control.
+            </p>
+
+        </div>
+
+
+        <div class="certificate-card">
+
+            <h3>Open Source</h3>
+
+            <p>
+                Learning open-source development and
+                contribution practices.
+            </p>
+
+        </div>
+
+
+        <div class="certificate-card">
+
+            <h3>Java Programming</h3>
+
+            <p>
+                Learning Java programming fundamentals
+                and object-oriented programming.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= OPEN SOURCE ================= -->
+
+<section>
+
+    <div class="section-heading">
+
+        <h2>Open <span>Source</span></h2>
+
+        <p>My developer journey</p>
+
+    </div>
+
+
+    <div class="opensource">
+
+        <h3>Learning Open Source Development 🚀</h3>
+
+        <p>
+            I am learning Git and GitHub and exploring
+            open-source contribution. I am building my
+            portfolio, practicing Git workflows and
+            improving my development skills.
+        </p>
+
+        <a
+            href="https://github.com/shweta07-lab"
+            target="_blank"
+            class="btn primary-btn">
+            Visit My GitHub
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+    <div class="section-heading">
+
+        <h2>Contact <span>Me</span></h2>
+
+        <p>Let's connect</p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <p>
+            I am always interested in learning new
+            technologies, collaborating on projects
+            and exploring new opportunities.
+        </p>
+
+        <p>
+            <strong>GitHub:</strong>
+            <a
+                href="https://github.com/shweta07-lab"
+                target="_blank">
+                github.com/shweta07-lab
+            </a>
+        </p>
+
+        <p>
+            <strong>Portfolio:</strong>
+            <a
+                href="https://shweta07-lab.github.io/"
+                target="_blank">
+                shweta07-lab.github.io
+            </a>
+        </p>
+
+        <!-- Add your email here later -->
+        <p>
+            <strong>Email:</strong>
+            Add your email here
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026
+        <span>Shweta Kumari</span>.
+        All Rights Reserved.
+    </p>
+
+    <p>
+        Built with HTML & CSS | Hosted on GitHub Pages
+    </p>
+
+</footer>
+
+
 </body>
 </html>
